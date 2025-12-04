@@ -1,76 +1,464 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contoh Scroll to Top - Herbaprima</title>
-
-    <!-- ========== LINK CSS DITEMPATKAN DI SINI (DALAM HEAD) ========== -->
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-    <!-- HEADER -->
-    <header>
-        <h1>Herbaprima</h1>
-        <p>Website Contoh untuk Implementasi Tombol Scroll to Top</p>
-    </header>
-
-    <!-- KONTEN UTAMA -->
-    <main>
-        <section class="content-box">
-            <h2>Bagian Konten Utama</h2>
-            <p>
-                Ini adalah contoh halaman sederhana untuk menguji tombol Scroll to Top.
-                Isi konten dibuat panjang agar bisa dilakukan scroll ke bawah.
-            </p>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Curabitur vehicula mauris vitae leo pulvinar, sit amet luctus sem bibendum.
-            </p>
-
-            <div class="dummy-text">
-                <p>Ini adalah teks dummy untuk melihat efek scroll...</p>
-                <p>Silakan scroll terus sampai ke bawah halaman...</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>Vestibulum a turpis vel arcu egestas ultricies.</p>
-                <p>Phasellus venenatis felis at quam bibendum egestas.</p>
-                <p>Banyak konten di sini agar halaman bisa panjang.</p>
-                <p>Scroll ke bawah... scroll lagi...</p>
-                <p>Sampai nanti tombol hijau muncul di kanan bawah.</p>
-                <p>Ketika diklik, halaman otomatis smooth scroll ke atas.</p>
-                <p>Cobalah sendiri!</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2025 Herbaprima - Contoh Halaman Scroll to Top</p>
-    </footer>
-
-    <!-- TOMBOL SCROLL TO TOP -->
-   <!-- <button id="scrollTopBtn" class="scroll-top">↑</button> -->
-        <!-- Tombol dengan SVG premium -->
-    <button class="btn">
-        <!-- SVG ICON -->
-        <svg viewBox="0 0 24 24">
-            <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm0-4h-2V7h2Z"/>
-        </svg>
-        Tombol Informasi
-    </button>
-
-    <br><br>
-
-    <button class="btn">
-        <svg viewBox="0 0 24 24">
-            <path d="M5 12h14M12 5v14" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        Tambah Data
-    </button>
-
-    <!-- ========== SCRIPT JS DITEMPATKAN DI SINI (MENJELANG </body>) ========== -->
-    <script src="assets/js/app.js"></script>
+<!doctype html>
+<html lang="id" style="height: 100%; overflow: hidden;">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Herbaprima - Toko online produk kesehatan herbal premium. Madu, suplemen, dan ramuan tradisional berkualitas tinggi untuk hidup sehat alami.">
+  <meta property="og:title" content="Herbaprima - Solusi Herbal Modern">
+  <meta property="og:description" content="Produk herbal premium untuk kesehatan optimal Anda">
+  <meta property="og:type" content="website">
+  <title>Herbaprima - Solusi Herbal Modern untuk Hidup Sehat</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+	<!-- link file css --> 
+ 
+ </head>
+ </head>
+ <body class="bg-gray-50">
+ <!-- ========================================== -->
+ <!-- PRELOADER - Loading Animation -->
+ <!-- ========================================== -->
+  <div class="preloader" id="preloader">
+   <div class="spinner"></div>
+  </div><!-- ========================================== --> <!-- HEADER - Navigation Bar (Sticky) --> <!-- ========================================== -->
+  <header class="bg-gradient-to-r from-green-50 to-emerald-50 shadow-md sticky top-0 z-50">
+   <nav class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+     <div class="flex items-center space-x-2">
+      <div class="w-10 h-10 flex items-center justify-center"><img id="logoImage" src="https://lh3.googleusercontent.com/d/1xp5ce29F3f-nVa_IEx925L-8YrXXbHo6" alt="Herbaprima Logo" class="w-full h-full object-contain" style="display: block;" onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex';">
+       <div id="logoFallback" class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl" style="display: none;">
+        H
+       </div>
+      </div><span id="headerBrandName" class="text-2xl font-bold text-green-700">Herbaprima</span>
+     </div>
+     <div class="hidden md:flex space-x-8"><a href="#" class="nav-link active text-gray-700 hover:text-green-600 font-medium" data-page="home">Home</a> <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium" data-page="produk">Produk</a> <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium" data-page="tentang">Tentang Kami</a> <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium" data-page="testimoni">Testimoni</a> <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium" data-page="blog">Blog</a> <a href="#" class="nav-link text-gray-700 hover:text-green-600 font-medium" data-page="kontak">Kontak</a>
+     </div>
+     <div class="flex items-center space-x-4"><button id="cartBtn" class="desktop-cart relative p-2 text-gray-700 hover:text-green-600 transition">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+       </svg><span id="cartCount" class="cart-badge">0</span> </button> <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-700">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-2"><a href="#" class="nav-link block py-2 text-gray-700 hover:text-green-600 font-medium" data-page="home">Home</a> <a href="#" class="nav-link block py-2 text-gray-700 hover:text-green-600 font-medium" data-page="produk">Produk</a> <a href="#" class="nav-link block py-2 text-gray-700 hover:text-green-600 font-medium" data-page="tentang">Tentang Kami</a> <a href="#" class="nav-link block py-2 text-gray-700 hover:text-green-600 font-medium" data-page="testimoni">Testimoni</a> <a href="#" class="nav-link block py-2 text-gray-700 hover:text-green-600 font-medium" data-page="blog">Blog</a> <a href="#" class="nav-link block py-2 text-gray-700 hover:text-green-600 font-medium" data-page="kontak">Kontak</a>
+    </div>
+   </nav>
+  </header>
+  <!-- ========================================== --> <!-- FLOATING CART BUTTON (Mobile Only) --> <!-- Positioned below header, fixed position --> <!-- ========================================== --> <button id="floatingCartMobile" class="floating-cart-mobile">
+   <svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+   </svg><span id="cartCountMobile" class="cart-badge">0</span> </button> <!-- ========================================== --> <!-- HOME PAGE - Hero, Categories --> <!-- ========================================== -->
+  <div id="homePage" class="page active"><!-- ========================================== --> <!-- HERO SECTION - Auto-rotating Image Slider --> <!-- ========================================== -->
+   <section class="relative h-screen overflow-hidden">
+    <div class="hero-slider">
+     <div class="hero-slide active bg-gradient-to-r from-green-800 to-green-600">
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+      <div class="absolute inset-0 flex items-center justify-center"><img src="https://hni.net/public/front/img/produk/sevel-stamina_11-09-25_.png" alt="Sevel Stamina" class="w-full h-full object-contain opacity-30" onerror="this.src=''; this.style.display='none';">
+      </div>
+     </div>
+     <div class="hero-slide bg-gradient-to-br from-green-700 to-emerald-600">
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+      <div class="absolute inset-0 flex items-center justify-center"><img src="https://hni.net/public/front/img/produk/cappucino-lessugar1_14-11-24_.png" alt="Cappuccino Less Sugar" class="w-full h-full object-contain opacity-30" onerror="this.src=''; this.style.display='none';">
+      </div>
+     </div>
+     <div class="hero-slide bg-gradient-to-tl from-emerald-800 to-green-500">
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+      <div class="absolute inset-0 flex items-center justify-center"><img src="https://hni.net/public/front/img/produk/hni-health-3_18-11-24_.png" alt="HNI Health" class="w-full h-full object-contain opacity-30" onerror="this.src=''; this.style.display='none';">
+      </div>
+     </div>
+     <div class="hero-slide bg-gradient-to-br from-green-600 to-teal-600">
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+      <div class="absolute inset-0 flex items-center justify-center"><img src="https://hni.net/public/front/img/produk/gluta2_27-10-22_.png" alt="Gluta Juicy Drink" class="w-full h-full object-contain opacity-30" onerror="this.src=''; this.style.display='none';">
+      </div>
+     </div>
+    </div>
+    <div class="absolute inset-0 flex items-center justify-center z-10">
+     <div class="text-center text-white px-4 max-w-4xl">
+      <h1 id="heroTitle" class="text-4xl md:text-6xl font-bold mb-6 fade-in">Herbaprima — Solusi Herbal Modern untuk Hidup Sehat Alami</h1>
+      <p id="heroSubtitle" class="text-lg md:text-xl mb-8 fade-in">Produk herbal premium berkualitas tinggi dari alam untuk kesehatan optimal Anda dan keluarga</p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 fade-in"><a href="#" class="nav-link bg-white text-green-700 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition transform hover:scale-105" data-page="produk">Lihat Produk</a> <a href="#" class="nav-link bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-green-700 transition transform hover:scale-105" data-page="kontak">Hubungi Kami</a>
+      </div>
+     </div>
+    </div>
+    <div class="absolute bottom-8 left-0 right-0 flex justify-center space-x-3 z-20"><button class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition" data-slide="0"></button> <button class="slider-dot w-3 h-3 rounded-full bg-white opacity-100 hover:opacity-100 transition" data-slide="1"></button> <button class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition" data-slide="2"></button> <button class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition" data-slide="3"></button>
+    </div>
+   </section><!-- ========================================== --> <!-- KATEGORI SECTION - Product Categories Grid --> <!-- ========================================== -->
+   <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 fade-in">Kategori Produk Unggulan</h2>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="category-card bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-8 text-center cursor-pointer fade-in" data-category="madu">
+       <div class="text-6xl mb-4">
+        🍯
+       </div>
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">Madu Premium</h3>
+       <p class="text-gray-600 text-sm">Madu murni berkualitas tinggi</p>
+      </div>
+      <div class="category-card bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl p-8 text-center cursor-pointer fade-in" data-category="suplemen">
+       <div class="text-6xl mb-4">
+        💊
+       </div>
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">Suplemen Herbal</h3>
+       <p class="text-gray-600 text-sm">Suplemen alami untuk kesehatan</p>
+      </div>
+      <div class="category-card bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl p-8 text-center cursor-pointer fade-in" data-category="minyak">
+       <div class="text-6xl mb-4">
+        🌿
+       </div>
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">Minyak &amp; Essential Oil</h3>
+       <p class="text-gray-600 text-sm">Minyak esensial murni</p>
+      </div>
+      <div class="category-card bg-gradient-to-br from-lime-50 to-lime-100 rounded-xl p-8 text-center cursor-pointer fade-in" data-category="ramuan">
+       <div class="text-6xl mb-4">
+        🌾
+       </div>
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">Ramuan Tradisional</h3>
+       <p class="text-gray-600 text-sm">Resep warisan nenek moyang</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div> <!-- END HOME PAGE --> <!-- ========================================== --> <!-- PRODUK PAGE - All Products & Bestsellers --> <!-- ========================================== -->
+  <div id="produkPage" class="page"><!-- Produk Section - All Products Grid -->
+   <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4 fade-in">Produk Pilihan Kami</h2>
+     <p class="text-center text-gray-600 mb-12 fade-in">Dipilih dengan hati-hati untuk kesehatan Anda</p>
+     <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6"><!-- Products will be inserted here -->
+     </div>
+    </div>
+   </section><!-- Produk Terlaris Section -->
+   <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4 fade-in">Produk Terlaris</h2>
+     <p class="text-center text-gray-600 mb-12 fade-in">Favorit pelanggan kami</p>
+     <div id="bestsellerGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6"><!-- Bestsellers will be inserted here -->
+     </div>
+    </div>
+   </section>
+  </div> <!-- END PRODUK PAGE --> <!-- ========================================== --> <!-- TESTIMONI PAGE - Customer Reviews --> <!-- ========================================== -->
+  <div id="testimoniPage" class="page"><!-- Testimoni Section - Customer Testimonials Grid -->
+   <section class="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
+    <div class="container mx-auto px-4">
+     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4 fade-in">Apa Kata Mereka?</h2>
+     <p class="text-center text-gray-600 mb-12 fade-in">Testimoni dari pelanggan setia kami</p>
+     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div class="bg-white rounded-xl p-6 shadow-lg fade-in">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center text-2xl mr-3">
+         👩
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-800">Siti Nurhaliza</h4>
+         <div class="text-yellow-500">
+          ⭐⭐⭐⭐⭐
+         </div>
+        </div>
+       </div>
+       <p class="text-gray-600 text-sm">"Madu Herbaprima sangat murni dan kualitasnya luar biasa. Anak-anak saya suka sekali!"</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 shadow-lg fade-in">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center text-2xl mr-3">
+         ����
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-800">Budi Santoso</h4>
+         <div class="text-yellow-500">
+          ⭐⭐⭐⭐⭐
+         </div>
+        </div>
+       </div>
+       <p class="text-gray-600 text-sm">"Suplemen herbalnya membantu meningkatkan stamina saya. Highly recommended!"</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 shadow-lg fade-in">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center text-2xl mr-3">
+         👩
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-800">Dewi Lestari</h4>
+         <div class="text-yellow-500">
+          ⭐⭐⭐⭐⭐
+         </div>
+        </div>
+       </div>
+       <p class="text-gray-600 text-sm">"Pelayanan cepat, produk berkualitas. Sudah langganan 2 tahun!"</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 shadow-lg fade-in">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center text-2xl mr-3">
+         👨
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-800">Ahmad Fauzi</h4>
+         <div class="text-yellow-500">
+          ⭐⭐⭐⭐⭐
+         </div>
+        </div>
+       </div>
+       <p class="text-gray-600 text-sm">"Ramuan tradisionalnya manjur banget. Kesehatan keluarga jadi terjaga."</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 shadow-lg fade-in">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-2xl mr-3">
+         👩
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-800">Rina Wijaya</h4>
+         <div class="text-yellow-500">
+          ⭐⭐⭐⭐⭐
+         </div>
+        </div>
+       </div>
+       <p class="text-gray-600 text-sm">"Produk original dan terpercaya. Harga juga sangat bersaing!"</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div> <!-- END TESTIMONI PAGE --> <!-- ========================================== --> <!-- TENTANG PAGE - About Company --> <!-- ========================================== -->
+  <div id="tentangPage" class="page"><!-- Tentang Kami Section - Company Vision & Mission -->
+   <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+     <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 fade-in">Tentang Herbaprima</h2>
+      <p class="text-gray-600 mb-8 fade-in">Herbaprima adalah pelopor produk kesehatan herbal modern di Indonesia. Kami berkomitmen menyediakan produk herbal berkualitas premium yang telah teruji secara klinis dan dipercaya oleh ribuan pelanggan.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+       <div class="fade-in">
+        <div class="text-5xl mb-4">
+         🎯
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Visi Kami</h3>
+        <p class="text-gray-600 text-sm">Menjadi brand herbal terpercaya nomor 1 di Indonesia</p>
+       </div>
+       <div class="fade-in">
+        <div class="text-5xl mb-4">
+         💚
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Misi Kami</h3>
+        <p class="text-gray-600 text-sm">Memberikan solusi kesehatan alami untuk hidup lebih sehat</p>
+       </div>
+       <div class="fade-in">
+        <div class="text-5xl mb-4">
+         ✨
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Keunggulan</h3>
+        <p class="text-gray-600 text-sm">100% alami, teruji lab, dan bersertifikat BPOM</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div> <!-- END TENTANG PAGE --> <!-- ========================================== --> <!-- BLOG PAGE - Health Articles --> <!-- ========================================== -->
+  <div id="blogPage" class="page"><!-- Blog Section - Health Articles Grid -->
+   <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4 fade-in">Artikel Kesehatan</h2>
+     <p class="text-center text-gray-600 mb-12 fade-in">Tips dan informasi seputar kesehatan alami</p>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+       <div class="bg-gradient-to-br from-green-400 to-green-600 h-48 flex items-center justify-center text-6xl">
+        🍯
+       </div>
+       <div class="p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">10 Manfaat Madu untuk Kesehatan</h3>
+        <p class="text-gray-600 text-sm mb-4">Madu memiliki berbagai khasiat luar biasa untuk kesehatan tubuh, mulai dari meningkatkan imunitas hingga...</p><a href="#" class="text-green-600 font-semibold hover:text-green-700">Baca Selengkapnya →</a>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+       <div class="bg-gradient-to-br from-emerald-400 to-emerald-600 h-48 flex items-center justify-center text-6xl">
+        🌿
+       </div>
+       <div class="p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Herbal Alami Penambah Stamina</h3>
+        <p class="text-gray-600 text-sm mb-4">Tanaman herbal tradisional yang terbukti efektif meningkatkan energi dan stamina secara alami...</p><a href="#" class="text-green-600 font-semibold hover:text-green-700">Baca Selengkapnya →</a>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl overflow-hidden shadow-lg fade-in">
+       <div class="bg-gradient-to-br from-teal-400 to-teal-600 h-48 flex items-center justify-center text-6xl">
+        🧘
+       </div>
+       <div class="p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Pola Hidup Sehat dengan Herbal</h3>
+        <p class="text-gray-600 text-sm mb-4">Bagaimana mengintegrasikan produk herbal dalam rutinitas harian untuk hidup lebih sehat dan bahagia...</p><a href="#" class="text-green-600 font-semibold hover:text-green-700">Baca Selengkapnya →</a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div> <!-- END BLOG PAGE --> <!-- ========================================== --> <!-- KONTAK PAGE - Contact Information & Form --> <!-- ========================================== -->
+  <div id="kontakPage" class="page"><!-- Kontak Section - Contact Info & Message Form -->
+   <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+     <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 fade-in">Hubungi Kami</h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+      <div class="fade-in">
+       <h3 class="text-2xl font-semibold text-gray-800 mb-6">Informasi Kontak</h3>
+       <div class="space-y-4">
+        <div class="flex items-start">
+         <svg class="w-6 h-6 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+         </svg>
+         <div>
+          <h4 class="font-semibold text-gray-800">Alamat</h4>
+          <p id="footerAddress" class="text-gray-600">Jl. Herbal Sehat No. 123, Jakarta Selatan, DKI Jakarta 12345</p>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <svg class="w-6 h-6 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+         <div>
+          <h4 class="font-semibold text-gray-800">Jam Operasional</h4>
+          <p id="footerHours" class="text-gray-600">Senin - Sabtu: 08:00 - 17:00 WIB</p>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <svg class="w-6 h-6 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+         </svg>
+         <div>
+          <h4 class="font-semibold text-gray-800">Email</h4>
+          <p id="footerEmail" class="text-gray-600">info@herbaprima.com</p>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <svg class="w-6 h-6 text-green-600 mr-3 mt-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+         </svg>
+         <div>
+          <h4 class="font-semibold text-gray-800">WhatsApp</h4>
+          <p id="footerWhatsApp" class="text-gray-600">+62 822-4190-0467</p>
+         </div>
+        </div>
+       </div>
+       <div class="mt-8">
+        <h4 class="font-semibold text-gray-800 mb-4">Media Sosial</h4>
+        <div class="flex space-x-4"><a href="#" class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center hover:bg-green-700 transition"> <span class="text-xl">📷</span> </a> <a href="#" class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center hover:bg-green-700 transition"> <span class="text-xl">🎵</span> </a> <a href="#" class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center hover:bg-green-700 transition"> <span class="text-xl">👥</span> </a>
+        </div>
+       </div>
+      </div>
+      <div class="fade-in">
+       <h3 class="text-2xl font-semibold text-gray-800 mb-6">Kirim Pesan</h3>
+       <form id="contactForm" class="space-y-4">
+        <div><label for="contactName" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label> <input type="text" id="contactName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <div><label for="contactEmail" class="block text-gray-700 font-medium mb-2">Email</label> <input type="email" id="contactEmail" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <div><label for="contactMessage" class="block text-gray-700 font-medium mb-2">Pesan</label> <textarea id="contactMessage" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required></textarea>
+        </div><button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">Kirim Pesan</button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div> <!-- END KONTAK PAGE --> <!-- ========================================== --> <!-- FOOTER - Site Links & Newsletter --> <!-- ========================================== -->
+  <footer class="bg-gray-900 text-white py-12">
+   <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+     <div>
+      <div class="flex items-center space-x-2 mb-4">
+       <svg class="w-8 h-8 text-green-500" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+       </svg><span id="footerBrandName" class="text-xl font-bold">Herbaprima</span>
+      </div>
+      <p class="text-gray-400 text-sm">Solusi herbal modern untuk hidup sehat alami. Produk berkualitas premium untuk kesehatan Anda.</p>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Navigasi</h3>
+      <ul class="space-y-2 text-gray-400 text-sm">
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="home">Home</a></li>
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="produk">Produk</a></li>
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="tentang">Tentang Kami</a></li>
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="testimoni">Testimoni</a></li>
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="blog">Blog</a></li>
+      </ul>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Kategori</h3>
+      <ul class="space-y-2 text-gray-400 text-sm">
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="produk">Madu Premium</a></li>
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="produk">Suplemen Herbal</a></li>
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="produk">Minyak Esensial</a></li>
+       <li><a href="#" class="nav-link hover:text-green-500 transition" data-page="produk">Ramuan Tradisional</a></li>
+      </ul>
+     </div>
+     <div>
+      <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+      <p class="text-gray-400 text-sm mb-4">Dapatkan tips kesehatan dan promo menarik</p>
+      <form id="newsletterForm" class="flex"><input type="email" placeholder="Email Anda" class="flex-1 px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none"> <button type="submit" class="bg-green-600 px-4 py-2 rounded-r-lg hover:bg-green-700 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg></button>
+      </form>
+     </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+     <p>© 2024 Herbaprima. All rights reserved. Made with 💚 for healthier life.</p>
+    </div>
+   </div>
+  </footer><!-- ========================================== --> <!-- PRODUCT DETAIL MODAL - Product Information --> <!-- Shows full product details, images, benefits --> <!-- ========================================== -->
+  <div id="productModal" class="modal">
+   <div class="modal-content">
+    <div class="p-8">
+     <div class="flex justify-between items-start mb-6">
+      <h2 id="modalTitle" class="text-3xl font-bold text-gray-800"></h2><button id="closeModal" class="text-gray-500 hover:text-gray-700 text-3xl">×</button>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+       <div id="modalImage" class="bg-gradient-to-br from-green-100 to-green-200 rounded-xl h-96 flex items-center justify-center text-8xl"></div>
+      </div>
+      <div>
+       <div id="modalBestseller" class="hidden inline-block bg-red-500 text-white text-xs px-3 py-1 rounded-full mb-4">
+        TERLARIS
+       </div>
+       <p id="modalPrice" class="text-3xl font-bold text-green-600 mb-6"></p>
+       <div class="mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Deskripsi</h3>
+        <p id="modalDescription" class="modal-description text-gray-600"></p>
+       </div>
+       <div class="mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Manfaat</h3>
+        <ul id="modalBenefits" class="modal-benefits list-disc list-inside text-gray-600 space-y-1"></ul>
+       </div>
+       <div class="mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Komposisi</h3>
+        <p id="modalComposition" class="modal-composition text-gray-600"></p>
+       </div>
+       <div class="flex space-x-4"><button id="modalAddToCart" class="flex-1 bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">Tambah ke Keranjang</button> <button id="modalBuyWhatsApp" class="flex-1 bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition flex items-center justify-center">
+         <svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+         </svg> Beli via WhatsApp </button>
+       </div>
+      </div>
+     </div><button id="closeModalBottom" class="close-modal-bottom w-full mt-6 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition">Tutup</button>
+    </div>
+   </div>
+  </div><!-- ========================================== --> <!-- CART MODAL - Shopping Cart --> <!-- Shows cart items, quantity controls, checkout --> <!-- ========================================== -->
+  <div id="cartModal" class="modal">
+   <div class="modal-content">
+    <div class="p-8">
+     <div class="flex justify-between items-start mb-6">
+      <h2 class="text-3xl font-bold text-gray-800">Keranjang Belanja</h2><button id="closeCart" class="text-gray-500 hover:text-gray-700 text-3xl">×</button>
+     </div>
+     <div id="cartItems" class="space-y-4 mb-6"><!-- Cart items will be inserted here -->
+     </div>
+     <div id="emptyCart" class="text-center py-12 hidden">
+      <div class="text-6xl mb-4">
+       🛒
+      </div>
+      <p class="text-gray-600">Keranjang Anda masih kosong</p>
+     </div>
+     <div id="cartSummary" class="border-t pt-6 hidden">
+      <div class="flex justify-between items-center mb-6"><span class="text-xl font-semibold text-gray-800">Total:</span> <span id="cartTotal" class="text-3xl font-bold text-green-600"></span>
+      </div>
+      <div class="flex space-x-4"><button id="clearCart" class="flex-1 bg-red-500 text-white py-3 rounded-lg font-semibold hover:bg-red-600 transition">Hapus Semua</button> <button id="checkoutWhatsApp" class="flex-1 bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition flex items-center justify-center">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+        </svg> Checkout WhatsApp </button>
+      </div>
+     </div><button id="closeCartBottom" class="close-modal-bottom w-full mt-6 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition">Tutup</button>
+    </div>
+   </div>
+  </div><!-- ========================================== --> <!-- FLOATING WHATSAPP BUTTON --> <!-- Fixed button at bottom right for quick contact --> <!-- ========================================== --> <a href="#" id="floatingWhatsApp" class="floating-whatsapp">
+   <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+   </svg></a> <!-- ========================================== --> <!-- SCROLL TO TOP BUTTON --> <!-- Appears when scrolling down, returns to top --> <!-- ========================================== --> <button id="scrollToTop" class="scroll-to-top">
+   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+   </svg></button>
+   
+   <!-- link berbaprima - 8 html -->
 </body>
 </html>
