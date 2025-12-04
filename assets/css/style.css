@@ -1,74 +1,401 @@
-/* =========================
-   Global Reset
-========================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-}
-
-body {
-    background: #f2f6f3;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-}
-
-/* =========================
-   Container
-========================= */
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-
-/* =========================
-   Premium Buttons
-========================= */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 18px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    border: none;
-    background: #2f855a;
-    color: white;
-    transition: 
-        transform 0.25s ease,
-        opacity 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-/* SVG icon style */
-.btn svg {
-    width: 18px;
-    height: 18px;
-    fill: white;
-    transition: transform 0.25s ease;
-}
-
-/* Hover animation (fade + zoom) */
-.btn:hover {
-    opacity: 0.9;
-    transform: scale(1.06);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
-}
-
-.btn:hover svg {
-    transform: scale(1.25);
-}
-
-/* Active effect */
-.btn:active {
-    transform: scale(0.92);
-    opacity: 0.7;
-}
+  <!-- herbaprima v8 style.css -->
+  <!-- ============================================ -->
+  <!-- GLOBAL STYLES - Basic Reset & Base Layout -->
+  <!-- ============================================ -->
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  </style>
+  <!-- ============================================ -->
+  <!-- ANIMATION STYLES - Fade In & Transitions -->
+  <!-- ============================================ -->
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes toastFade {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  </style>
+  <!-- ============================================ -->
+  <!-- PRELOADER STYLES -->
+  <!-- ============================================ -->
+  <style>
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    
+    .preloader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #e5e7eb;
+      border-top: 4px solid #16a34a;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  </style>
+  <!-- ============================================ -->
+  <!-- HERO SLIDER STYLES -->
+  <!-- ============================================ -->
+  <style>
+    .hero-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    
+    .hero-slide.active {
+      opacity: 1;
+    }
+  </style>
+  <!-- ============================================ -->
+  <!-- MODAL STYLES -->
+  <!-- ============================================ -->
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    
+    .modal.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90%;
+      overflow-y: auto;
+      animation: slideUp 0.3s ease;
+      position: relative;
+    }
+    
+    .confirm-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .close-modal-bottom {
+      display: none;
+    }
+  </style>
+  <!-- ============================================ -->
+  <!-- CART & BADGE STYLES -->
+  <!-- ============================================ -->
+  <style>
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ef4444;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    
+    .toast-notification {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #16a34a;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 2000;
+      animation: toastFade 0.3s ease;
+      font-weight: 500;
+    }
+  </style>
+  <!-- ============================================ -->
+  <!-- FLOATING BUTTONS STYLES -->
+  <!-- ============================================ -->
+  <style>
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      z-index: 999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    .scroll-to-top {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: #16a34a;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 999;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    
+    .scroll-to-top.visible {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+    }
+    
+    .floating-cart-mobile {
+      display: none;
+    }
+  </style>
+  <!-- ============================================ -->
+  <!-- PRODUCT CARD & NAVIGATION STYLES -->
+  <!-- ============================================ -->
+  <style>
+    .product-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #16a34a;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link.active {
+      color: #16a34a;
+      font-weight: 600;
+    }
+    
+    .category-card {
+      transition: transform 0.3s ease;
+    }
+    
+    .category-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .page {
+      display: none;
+    }
+    
+    .page.active {
+      display: block;
+    }
+  </style>
+  <!-- ============================================ -->
+  <!-- MOBILE RESPONSIVE STYLES -->
+  <!-- ============================================ -->
+  <style>
+    @media (max-width: 768px) {
+      /* Product card enhancements - 20% larger */
+      .product-card .product-image {
+        height: 14.4rem !important;
+      }
+      
+      .product-card h3 {
+        font-size: 1.08rem !important;
+      }
+      
+      .product-card p {
+        font-size: 1.08rem !important;
+      }
+      
+      .product-card button {
+        font-size: 0.9rem !important;
+      }
+      
+      /* Modal description - 10% larger fonts */
+      .modal-content .modal-description {
+        font-size: 1.045rem !important;
+      }
+      
+      .modal-content .modal-benefits {
+        font-size: 1.045rem !important;
+      }
+      
+      .modal-content .modal-composition {
+        font-size: 1.045rem !important;
+      }
+      
+      /* Show bottom close button on mobile */
+      .close-modal-bottom {
+        display: block !important;
+      }
+      
+      /* Mobile floating cart - positioned below header, sticky */
+      .floating-cart-mobile {
+        display: flex;
+        position: fixed;
+        top: 85px;
+        right: 16px;
+        background: white;
+        color: #16a34a;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        z-index: 40;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .floating-cart-mobile:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+      
+      /* Hide desktop cart */
+      .desktop-cart {
+        display: none !important;
+      }
+      
+      /* Make cart images visible in mobile cart modal */
+      #cartModal .modal-content img {
+        display: block !important;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
