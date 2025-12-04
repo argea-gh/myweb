@@ -1,66 +1,74 @@
-/* ====== Style Umum Halaman ====== */
-body {
+/* =========================
+   Global Reset
+========================= */
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
 }
 
-header {
-    background: #2ecc71;
-    color: white;
-    padding: 40px;
-    text-align: center;
-}
-
-main {
+body {
+    background: #f2f6f3;
+    color: #333;
+    line-height: 1.6;
     padding: 20px;
 }
 
-.content-box {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+/* =========================
+   Container
+========================= */
+.container {
+    max-width: 900px;
     margin: auto;
-}
-
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
     padding: 20px;
-    margin-top: 50px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
 }
 
-/* ====== Scroll To Top Button ====== */
-.scroll-top {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 45px;
-    height: 45px;
-    background: #2ecc71;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 22px;
-    display: flex;
+/* =========================
+   Premium Buttons
+========================= */
+.btn {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease;
-    z-index: 999;
+    gap: 8px;
+    padding: 12px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background: #2f855a;
+    color: white;
+    transition: 
+        transform 0.25s ease,
+        opacity 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.scroll-top.show {
-    opacity: 1;
-    visibility: visible;
+/* SVG icon style */
+.btn svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    transition: transform 0.25s ease;
 }
 
-.scroll-top:hover {
-    background: #27ae60;
+/* Hover animation (fade + zoom) */
+.btn:hover {
+    opacity: 0.9;
+    transform: scale(1.06);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
+.btn:hover svg {
+    transform: scale(1.25);
+}
+
+/* Active effect */
+.btn:active {
+    transform: scale(0.92);
+    opacity: 0.7;
 }
