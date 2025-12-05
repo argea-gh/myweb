@@ -1562,19 +1562,22 @@
       // Checkout via WhatsApp with all cart items
       document.getElementById('checkoutWhatsApp').addEventListener('click', checkoutWhatsApp);
       
-      // ============================================
+	     // ============================================
       // Scroll to Top Button
       // ============================================
       
       // Show/hide scroll button based on scroll position
-      window.addEventListener('scroll', () => {
+      const handleScroll = () => {
         const scrollBtn = document.getElementById('scrollToTop');
-        if (window.pageYOffset > 300) {
+        if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
           scrollBtn.classList.add('visible');
         } else {
           scrollBtn.classList.remove('visible');
         }
-      });
+      };
+      
+      window.addEventListener('scroll', handleScroll);
+      document.addEventListener('scroll', handleScroll);
       
       // Scroll to top when button clicked
       document.getElementById('scrollToTop').addEventListener('click', () => {
