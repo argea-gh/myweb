@@ -25,18 +25,25 @@ body {
 }
 
 /* Preloader */
+/* Preloader default hidden */
 .preloader {
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.95);
   z-index: 2000;
-  display: none; /* default hidden */
-}
-.preloader.active {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 1;
+  transition: opacity 0.6s ease;
 }
+
+/* Saat di-hide */
+.preloader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
 
 
 /* Logo */
