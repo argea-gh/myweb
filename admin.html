@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel — Herbaprima</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="mb-4">Admin Panel</h1>
+
+    <!-- Form tambah produk -->
+    <form id="addProductForm" class="mb-4">
+      <div class="row g-2">
+        <div class="col-md-3"><input type="text" class="form-control" placeholder="Nama Produk" id="prodName" required></div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="Kategori" id="prodCat" required></div>
+        <div class="col-md-2"><input type="number" class="form-control" placeholder="Harga" id="prodPrice" required></div>
+        <div class="col-md-3"><input type="url" class="form-control" placeholder="Link Gambar" id="prodImg" required></div>
+        <div class="col-md-2"><button class="btn btn-success w-100">Tambah</button></div>
+      </div>
+    </form>
+
+    <!-- Tabel produk -->
+    <table class="table table-bordered">
+      <thead><tr><th>Nama</th><th>Kategori</th><th>Harga</th><th>Gambar</th><th>Aksi</th></tr></thead>
+      <tbody id="adminTable"></tbody>
+    </table>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    const adminTable = document.getElementById('adminTable');
+    function renderAdminTable() {
+      adminTable.innerHTML = '';
+      products.forEach((p,i) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${p.name}</td>
+          <td>${p.category}</td>
+          <td>${formatRupiah(p.price)}</td>
+          <td><img src="${p.img}" width="50"></td>
+          <td>
+            <button class="btn btn-sm btn
