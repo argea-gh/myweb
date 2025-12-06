@@ -39,13 +39,21 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 // ===== Preloader =====
 document.addEventListener('DOMContentLoaded', () => {
-  const pre = $('#preloader');
-  if (pre) {
-    pre.classList.add('active');
-    window.addEventListener('load', () => {
-      setTimeout(() => pre.classList.remove('active'), 300);
-    });
-  }
+  const pre = document.getElementById('preloader');
+  if (!pre) return;
+
+  // tampilkan preloader
+  pre.classList.add('active');
+
+  // pastikan dihapus saat semua resource selesai
+  window.addEventListener('load', () => {
+    pre.classList.remove('active');
+  });
+
+  // fallback: auto-hide setelah 2 detik walau load event gagal
+  setTimeout(() => {
+    pre.classList.remove('active');
+  }, 2000);
 });
 
 // ===== Year in footer =====
