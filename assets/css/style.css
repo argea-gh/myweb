@@ -27,12 +27,17 @@ body {
 /* Preloader */
 .preloader {
   position: fixed;
-  z-index: 2000;
   inset: 0;
-  background: rgba(255,255,255,0.8);
-  display: none;
+  background: rgba(255,255,255,0.9);
+  z-index: 2000;
+  display: none; /* default hidden */
 }
-.preloader.active { display: flex; }
+.preloader.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 /* Logo */
 .logo {
