@@ -1,6 +1,6 @@
 /* assets/css/style.css */
 
-/* Fonts and base */
+/* Palet & variabel tema */
 :root {
   --hp-green: #1b8c54;
   --hp-green-2: #2ea76a;
@@ -17,6 +17,7 @@ html[data-theme="dark"] {
   --hp-dark: #e8e8e8;
 }
 
+/* Base typography */
 body {
   font-family: 'Poppins', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: var(--hp-text);
@@ -24,51 +25,27 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Preloader */
-/* Preloader default hidden */
-.preloader {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.95);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-  transition: opacity 0.6s ease;
-}
-
-/* Saat di-hide */
-.preloader.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-
-
-/* Logo */
+/* Logo kecil di navbar/footer */
 .logo {
-  width: 36px;
-  height: 36px;
+  width: 36px; height: 36px;
   object-fit: cover;
   border-radius: 4px;
 }
 
-/* Navbar tweaks */
+/* Navbar premium */
 .navbar .nav-link {
   font-weight: 500;
   transition: color .2s ease;
 }
 .navbar .nav-link:hover { color: var(--hp-green); }
 
-/* Hero */
+/* Hero dengan background premium */
 .hero {
   background-image: url('https://images.unsplash.com/photo-1524592901997-3e3530a9930e?q=80&w=1600&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
   min-height: 70vh;
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center;
 }
 .hero-overlay {
   position: absolute; inset: 0;
@@ -76,7 +53,7 @@ body {
 }
 .hero .display-5 { line-height: 1.1; }
 
-/* Section title */
+/* Judul section */
 .section-title {
   font-weight: 700;
   color: var(--hp-dark);
@@ -84,7 +61,7 @@ body {
   padding-left: 12px;
 }
 
-/* Category cards */
+/* Kartu kategori */
 .category-card {
   background: var(--hp-light);
   color: var(--hp-green);
@@ -94,13 +71,14 @@ body {
   text-align: center;
   font-weight: 600;
   transition: transform .2s ease, box-shadow .2s ease;
+  text-decoration: none;
 }
 .category-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(27,140,84,0.12);
 }
 
-/* Product card */
+/* Kartu produk */
 .product-card {
   border: 1px solid #e9f3ee;
   border-radius: 16px;
@@ -118,7 +96,7 @@ body {
   background: #f3faf6;
 }
 
-/* Footer */
+/* Footer gradient premium */
 .footer {
   background: linear-gradient(180deg, var(--hp-green), var(--hp-green-2));
 }
@@ -133,7 +111,7 @@ body {
 }
 .scroll-top.show { display: inline-flex; }
 
-/* Floating WA */
+/* Floating WhatsApp */
 .floating-wa {
   position: fixed;
   bottom: 80px; right: 20px;
@@ -142,10 +120,22 @@ body {
   z-index: 1010;
 }
 
-/* Dark mode adjustments */
-html[data-theme="dark"] body {
-  background: var(--hp-bg);
+/* Preloader: fade-out halus */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1;
+  transition: opacity 0.6s ease;
 }
+.preloader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Dark mode adjustments */
 html[data-theme="dark"] .navbar,
 html[data-theme="dark"] .card,
 html[data-theme="dark"] .offcanvas,
@@ -157,5 +147,4 @@ html[data-theme="dark"] .bg-light {
   background-color: #111 !important;
 }
 
-/* Responsive product grid helpers (6/5/4/3/2/1) via Bootstrap cols:
-   We'll rely on col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 for 6 max columns */
+/* Responsif: gunakan Bootstrap cols untuk 6/5/4/3/2/1 */
