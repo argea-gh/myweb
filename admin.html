@@ -1,9 +1,11 @@
+<!-- admin.html -->
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Panel — Herbaprima</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -11,35 +13,127 @@
   <div class="container py-5">
     <h1 class="mb-4">Admin Panel</h1>
 
-    <!-- Form tambah produk -->
+    <!-- Form tambah produk: input nama, kategori, harga, gambar -->
     <form id="addProductForm" class="mb-4">
-      <div class="row g-2">
-        <div class="col-md-3"><input type="text" class="form-control" placeholder="Nama Produk" id="prodName" required></div>
-        <div class="col-md-2"><input type="text" class="form-control" placeholder="Kategori" id="prodCat" required></div>
-        <div class="col-md-2"><input type="number" class="form-control" placeholder="Harga" id="prodPrice" required></div>
-        <div class="col-md-3"><input type="url" class="form-control" placeholder="Link Gambar" id="prodImg" required></div>
-        <div class="col-md-2"><button class="btn btn-success w-100">Tambah</button></div>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Nama Produk</label>
+          <input type="text" class="form-control" id="prodName" required>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Kategori</label>
+          <select class="form-select" id="prodCat" required>
+            <option value="">Pilih...</option>
+            <option>Minuman Sehat</option>
+            <option>Madu Premium</option>
+            <option>Minyak Herba</option>
+            <option>Aneka Herbal</option>
+            <option>Perawatan Kulit</option>
+            <option>Perawatan Pribadi</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Harga</label>
+          <input type="number" class="form-control" id="prodPrice" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Link Gambar</label>
+          <input type="url" class="form-control" id="prodImg" required>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-success w-100" type="submit">Tambah</button>
+        </div>
       </div>
     </form>
 
-    <!-- Tabel produk -->
-    <table class="table table-bordered">
-      <thead><tr><th>Nama</th><th>Kategori</th><th>Harga</th><th>Gambar</th><th>Aksi</th></tr></thead>
+    <!-- Tabel produk: daftar semua produk (default + admin) -->
+    <table class="table table-bordered table-striped">
+      <thead class="table-success">
+        <tr><th>Nama</th><th>Kategori</th><th>Harga</th><th>Gambar</th><th>Aksi</th></tr>
+      </thead>
       <tbody id="adminTable"></tbody>
     </table>
   </div>
 
+  <!-- Modal edit produk: ubah data yang disimpan -->
+  <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Produk</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editProductForm">
+            <input type="hidden" id="editIndex">
+            <div class="mb-2">
+              <label class="form-label">Nama</label>
+              <input type="text" id="editName" class="form-control" required>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Kategori</label>
+              <select id="editCat" class="form-select" required>
+                <option>Minuman Sehat</option>
+                <option>Madu Premium</option>
+                <option>Minyak Herba</option>
+                <option>Aneka Herbal</option>
+                <option>Perawatan Kulit</option>
+                <option>Perawatan Pribadi</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Harga</label>
+              <input type="number" id="editPrice" class="form-control" required>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Gambar</label>
+              <input type="url" id="editImg" class="form-control" required>
+            </div>
+            <div class="d-grid mt-3">
+              <button class="btn btn-success" type="submit">Simpan Perubahan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/app.js"></script>
   <script>
-    const adminTable = document.getElementById('adminTable');
-    function renderAdminTable() {
-      adminTable.innerHTML = '';
-      products.forEach((p,i) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${p.name}</td>
-          <td>${p.category}</td>
-          <td>${formatRupiah(p.price)}</td>
-          <td><img src="${p.img}" width="50"></td>
-          <td>
-            <button class="btn btn-sm btn
+    // Inisialisasi tabel admin
+    renderAdminTable();
+
+    // Tambah produk
+    document.getElementById('addProductForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      addAdminProduct({
+        name: document.getElementById('prodName').value.trim(),
+        category: document.getElementById('prodCat').value,
+        price: parseInt(document.getElementById('prodPrice').value, 10),
+        img: document.getElementById('prodImg').value.trim()
+      });
+      e.target.reset();
+      renderAdminTable();
+      alert('Produk ditambahkan.');
+    });
+
+    // Edit produk (submit modal)
+    document.getElementById('editProductForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const i = parseInt(document.getElementById('editIndex').value, 10);
+      updateAdminProduct(i, {
+        name: document.getElementById('editName').value.trim(),
+        category: document.getElementById('editCat').value,
+        price: parseInt(document.getElementById('editPrice').value, 10),
+        img: document.getElementById('editImg').value.trim()
+      });
+      renderAdminTable();
+      bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+      alert('Produk diperbarui.');
+    });
+  </script>
+</body>
+</html>
